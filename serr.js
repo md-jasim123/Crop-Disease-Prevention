@@ -2,10 +2,31 @@ import express from "express";
 import cors from "cors";
 import axios from "axios";
 import bodyParser from "body-parser";
+import dotenv from "dotenv";
+import connectDB from "./config/db.js";
+import authRoutes from "./routes/authRoutes.js";
+
+dotenv.config();
+
+connectDB();
 
 const app = express();
+
+// Static files
+app.use(express.static("public", {
+    index: false
+}));
+
+// Default route
+app.get("/", (req, res) => {
+    res.sendFile(process.cwd() + "/public/login.html");
+});
+
 app.use(cors());
 app.use(bodyParser.json({ limit: "10mb" }));
+app.use("/api/auth", authRoutes);
+
+
 
 app.post("/analyze", async (req, res) => {
   try {
@@ -20,7 +41,7 @@ app.post("/analyze", async (req, res) => {
         "Content-Type": "application/x-www-form-urlencoded",
       },
     });
-   
+
     res.json(response.data);
   } catch (error) {
     console.error("Error:", error.message);
@@ -28,6 +49,6 @@ app.post("/analyze", async (req, res) => {
   }
 });
 
-app.listen(5000, () =>
-  console.log("backend is running ")
-);
+app.listen(5000, () => {
+  console.log("Backend is running on port 5000");
+});

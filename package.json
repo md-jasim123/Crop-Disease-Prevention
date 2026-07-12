@@ -6,13 +6,16 @@
     "@google/genai": "^1.28.0",
     "@google/generative-ai": "^0.24.1",
     "axios": "^1.13.2",
+    "bcryptjs": "^3.0.3",
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "daemon": "^1.1.0",
-    "dotenv": "^17.2.3",
+    "dotenv": "^17.4.2",
     "express": "^5.1.0",
     "init": "^0.1.2",
-    "install": "^0.13.0"
+    "install": "^0.13.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.7.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -22,6 +25,5 @@
   "author": "",
   "license": "ISC",
   "type": "module",
-  "devDependencies": {},
   "description": ""
 }
